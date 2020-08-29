@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.api.biomes.v1;
+package net.fabricmc.fabric.mixin.biome;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 
-import net.fabricmc.fabric.impl.biome.InternalBiomeData;
-
-/**
- * General API that applies to all biome sources.
- */
-public final class FabricBiomes {
-	private FabricBiomes() { }
-
-	/**
-	 * Allows players to naturally spawn in this biome.
-	 *
-	 * @param biome a biome the player should be able to spawn in
-	 */
-	public static void addSpawnBiome(Biome biome) {
-		InternalBiomeData.addSpawnBiome(biome);
+@Mixin(Biomes.class)
+public interface BiomesAccessor {
+	@Accessor
+	static Int2ObjectMap<RegistryKey<Biome>> getBIOMES() {
+		throw new AssertionError("mixin");
 	}
 }
