@@ -3,7 +3,7 @@
   "package": "net.fabricmc.fabric.mixin.brewing",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-
+    "BrewingRecipeRegistryAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
